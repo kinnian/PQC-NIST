@@ -26,3 +26,5 @@ Titanium/*
 
 
 *.pdf
+.gitignore
+Performance_Testing_TestPlatform.xlsx
