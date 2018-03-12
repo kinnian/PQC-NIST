@@ -5,7 +5,6 @@
 Il y a de nombreux protocoles PKE qui ont été soumis :
 
 * Compact-LWE, basé sur LWE ;
-* EMBLEM et R.EMBLEM, basés respectivement sur LWE et RLWE ;
 * Kindi, basé sur RLWE ;
 * LAC, basé sur RLWE ;
 * LIMA, basé sur RLWE, avec deux contraintes différentes pour p : power-of-two (2p) ou safe-prime (sp) ;
@@ -26,8 +25,6 @@ Les tailles sont en octets, les temps en microsecondes.
 | Protocole     | Sécurité  | N	    | Clé privée	| Clé publique	| Chiffré	    | Temps total   | 
 |:-------------	|:----------| -----:| -------------:| -------------:| -------------:| -------------:|
 | Compact-LWE	| 3		    | 8	    | 232		    | 2 064		    | 9 288		    | 3 225         | 
-| EMBLEM	    | 1		    | 770	| 32		    | 3 041		    | 74 048	    | 126 900       |
-| R.EMBLEM	    | 1		    | 463	| 32		    | 958		    | 1 470		    | *?*           |
 | Kindi-256-3   | 2         | 768   | 1 472         | 1 184         | 1 792         | 331           |
 | Kindi-512-2   | 4         | 1024  | 1 712         | 1 184         | 1 792         | 379           |
 | Kindi-256-5   | 5         | 1280  | 2 304         | 1 728         | 2 688         | 789           |
