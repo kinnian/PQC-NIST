@@ -19,8 +19,8 @@ La syntaxe d'utilisation de `size.py` est la suivante :
 python size.py <Chemin du fichier>
 ```
 
-La variable `<Chemin du fichier>` dépend du protocole choisi et se présente sous la forme `<Protocole>/<Protocole>-{std,opt}/PQCkemKAT_<chiffre>.rsp`. Les
-versions `std` et `opt` correspondent respectivement aux versions standard et optimisée du protocole donné. La variable `<chiffre>` dépend du protocole, elle se trouve dans le dossier `<Protocole>/<Protocol>-{std,opt}`.
+La variable `<Chemin du fichier>` dépend du protocole choisi et se présente sous la forme `<Protocole>/<Protocole>-{ref,opt}/PQCkemKAT_<chiffre>.rsp`. Les
+versions `ref` et `opt` correspondent respectivement aux versions standard et optimisée du protocole donné. La variable `<chiffre>` dépend du protocole, elle se trouve dans le dossier `<Protocole>/<Protocol>-{ref,opt}`.
 
 *Exemple :*
 ```
@@ -40,7 +40,7 @@ sudo mv avg_time.sh /bin/avg_time.sh
 ```
 
 Lors de l'exécution de `avg_time.py`, il faudra donner le chemin (relatif) de l'exécutable choisi, que l'on trouve comme précédemment dans le dossier
-`<Protocole>/<Protocole>-{std,opt}`.
+`<Protocole>/<Protocole>-{ref,opt}`.
 
 *Exemple :*
 ```
