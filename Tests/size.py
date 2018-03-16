@@ -13,7 +13,7 @@ Options:
 
 """
 
-path = docopt(help).get("arg")
+path = docopt(help).get('<arg>')
 
 def size(path_name):
     output = open("/home/kinnian/Documents/PQC-NIST/Tests/" + path_name, "r")
@@ -50,6 +50,7 @@ def size(path_name):
     ct_bytes = ct_bytes/100
     ss_bytes = ss_bytes/100
 
+    print("sk, pk, ct, ss :")
     print(sk_bytes, pk_bytes, ct_bytes, ss_bytes)
     return 0
 
