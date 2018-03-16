@@ -1,3 +1,6 @@
+# Les dossiers de toutes les soumissions LWE/NTRU étudiées, 
+# téléchargés depuis le site du NIST :
+# https://csrc.nist.gov/projects/post-quantum-cryptography/round-1-submissions
 Compact-LWE-Public-Key-Enc/*
 CRYSTALS-Dilithium/*
 CRYSTALS-Kyber/*
@@ -24,7 +27,13 @@ SABER_KEM/*
 submission/*
 Titanium/*
 
-
+# Les rendus pdf des fichiers markdown
 *.pdf
-.gitignore
+
+# Tests de performances du NIST, envoyé sur le google group [pqc-forum]
+# "The attached spreadsheet contains a baseline of the number of cycles
+# taken (and the number of bytes used) to run all various submissions
+# and instantiations we’ve received  (except for those where the
+# submitters have conceded that their submissions did not meet the
+# minimum NIST security levels) when run on the NIST reference platform."
 Performance_Testing_TestPlatform.xlsx
