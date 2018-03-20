@@ -2,6 +2,7 @@
 
 ### Remarque préliminaire
 Les protocoles Kindi-{256-5,512-3}, {A,O}KCN-RLWE, uRound2-RLWR5 et {Mama,Papa}Bear n'ont pas pu être testées sur ma machine. Il s'agit la plupart du temps d'une erreur lors du `make`. En revanche, comme ces erreurs ne sont pas relevées par les tests de performances effectués par le NIST, il s'agit probablement d'un défaut de la machine utilisée (absence d'une librairie, ...) qui pourra potentiellement être corrigé par la suite.
+Pour le moment, des tentatives de correction ont été apportées en ajoutant la bibliothèque [keccak](https://github.com/gvanas/KeccakCodePackage) `KeccakCodePackage`. Cela a permis de compiler correctement les versions de références de MamaBear et PapaBear. Cependant, les versions optimisées, ainsi que uRound2-RLWR5 (qui utilise la même bibliothèque), font appel à des fonctions de cette bibliothèque que le compilateur ne semble pas trouver. 
 
 
 ## Tailles
@@ -21,6 +22,8 @@ Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en s
 | LAC256      | 0.436     | 0.084     |
 | NewHope1024 | 0.183     | 0.183     |
 | FireSaber   | 0.325     | 0.196     |
+| MamaBear    | 0.480     | *?*       |
+| PapaBear    | 0.781     | *?*       |
 
 * Pour Kyber1024 et NewHope1024, on ne voit aucune amélioration entre la version de référence et la version optimisée.
 * Les temps mesurés ici, rapportés à une instance, sont 2 à 5 fois plus grands que ceux obtenus dans la documentation (voir [ici](../kem.md) ).
@@ -33,3 +36,9 @@ Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en s
 | Kyber1024   | 4,951,763 |
 | FireSaber   | 6,040,376 |
 | Hila5       | 13,869,431|
+
+* Dans le test de performance du NIST, MamaBear et PapaBear se distingue par leur rapidité : respectivement 548,177 et 826,005 cycles pour 100 instances,
+  soit presque 10 fois moins que les autres protocoles mentionnés dans le tableau précédent. Cependant, il s'agit le plus probablement des versions
+  optimisées, et je n'arrive pas à exécuter ces versions, qui utilisent beaucoup de fonctions externes. Cela signifie que non seulement je n'arrive pas à
+  exécuter le code fourni dans la soumission au NIST, mais aussi que implémenter moi-même ces protocoles optimisés serait plus délicat que pour d'autres
+  protocoles.

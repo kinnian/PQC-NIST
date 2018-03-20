@@ -1,5 +1,5 @@
 CC ?= cc
-CFLAGS ?= -Wall -Wextra -Wpedantic -Os -std=c11
+CFLAGS ?= -Wall -Wextra -Wpedantic -Os -std=c11 
 BUILDDIR ?= build
 
 SRCS = $(wildcard *.c) $(wildcard NIST/*.c)
