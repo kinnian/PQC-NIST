@@ -1,28 +1,32 @@
+### TODO encodage utf-8 pour pouvoir mettre des accents
 import math
+from decimal import Decimal 
 import numpy
 import os
-import _pysha3 # Bibliotheque pour la fonction cSHAKE256 utilisee par la fonction de hachage 
+from _pysha3 import keccak_512 # Bibliotheque pour la fonction cSHAKE256 utilisee par la fonction de hachage 
 
 
 # Constantes de MamaBear
 
 D = 312
 x = 2**10
-N = x**D - x**(D/2) - 1
+N = Decimal(x**D - x**(D/2) - 1)
 d = 3
 sigma2 = 1/2
-clar = x**(D/2)
+clar = int(x**(D/2))
 l = 4
 
 
 ## Fonctions auxilliaires
 
 def encode_string(S):
-    return bytearray([len(len(S)), len(S)]) + S
+    l_S = len(bytearray(S))
+    l_l_S = len(bytearray(l_S))
+    return bytearray(l_l_S) + bytearray(l_S) + bytearray(S)
 
 def bytepad(X, w):
-    z = bytearray([len(w), w]) + X
-    while (len(z)%0) != 0:
+    z = bytearray([len(bytearray(w)), w]) + X
+    while (len(z)%8) != 0:
         z = z + b'0'
     while ((len(z)/8)%w) != 0:
         z = z + b'0 0 0 0 0 0 0 0'
@@ -34,7 +38,7 @@ def h(p, data, L):
     LL = 8*L
     NN = b""
     SS = b"ThreeBears"
-    return keccak_512(bytepad(encode_string(NN) + encode_string(SS), 136) + XX + b'0 0', LL)
+    return keccak_512((bytepad(encode_string(NN) + encode_string(SS), 136) + XX + b'0 0')).hexdigest()
 
 def uniform(seed, i, j):
     B = h(0, seed + bytearray([d*j+i]), len(bytearray([])))
@@ -43,15 +47,16 @@ def uniform(seed, i, j):
 
 def noise(p, seed, i):
     B = h(p, seed + bytearray(i), D)
-    for j in range(0,D):
+    digit = numpy.zeros(d)
+    for j in range(0,d):
         sample = B[j]
         digit[j] = 0
-        for k in range(0, math.ceil(2*sigma2)):
+        for k in range(0, int(math.ceil(2*sigma2))):
             v = 64*min(1, (2*sigma2 - k))
             digit[j] = digit[j] + round((sample + v)/256) + round((sample - v)/256)
             sample = (sample*4) % 256
-    for j in range(0,D):
-        digit[j] = (digit[j]*x**j)%N
+    for j in range(0,d):
+        digit[j] = int(Decimal(digit[j]*x**j)%N)
     return numpy.sum(digit)
 
 def extract(b, S, i):
@@ -128,16 +133,22 @@ def fecDecode_18(B):
 ## Keypair Generation
 
 def getPubKey(sk):
+    a = numpy.zeros(d)
     for i in range(d):
         a[i] = noise(1, sk, i)
 
     matrixSeed = h(1,sk, 24)
+    M = numpy.zeros((d,d), dtype=bytearray)
     for i in range(d):
         for j in range(d):
-            M[i][j] = uniform(matrixSeed, i, j)
+            M[i][j] = (uniform(matrixSeed, i, j))
+            i = int(i)
+            j = int(j)
+            M[i][j] = M[i][j]*int(a[i])*clar # on multiplie deja par a et clar, pour simplifier la sommation suivante    
 
+    A = numpy.zeros(d)
     for i in range(d):
-        A[i] = noise(1, sk, d+i) + numpy.sum(M[i]*a*clar) # TODO multiplication de vecteurs composant par composant
+        A[i] = noise(1, sk, d+i) + numpy.sum(M[i]) 
 
     pk = (matrixSeed, A)
     return pk
@@ -157,12 +168,14 @@ def encapsDet(pk, seed):
 
     for i in range(d):
         for j in range(d):
-            M[i][j] = uniform(matrixSeed, i, j)
+            M[i][j] = uniform(matrixSeed, i, j)*b[i]*clar # idem que precedemment
 
     for i in range(d):
-        B[i] = noise(2, seed, d+i) + numpy.sum(M[i]*b*clar) # TODO same as before
+        B[i] = noise(2, seed, d+i) + numpy.sum(M[i]*b*clar) 
 
-    C = noise(2, seed, 2*d) + numpy.sum(A*b*clar)   # TODO same
+    for i in range(d):
+        A[i] = A[i]*b[i]*clar
+    C = noise(2, seed, 2*d) + numpy.sum(A)   # idem 
     pt = seed
 
     encpt = fecEncode(bit(pt))   # TODO mettre pt en bit string
@@ -198,3 +211,12 @@ def decapsulate(sk, capsule):
         return "Fail!"
     else:
         return shared_secret
+
+
+### TEST ###
+
+(sk, pk) = keypair()
+print (sk, pk)
+
+caps = encapsulate(pk)
+print caps
