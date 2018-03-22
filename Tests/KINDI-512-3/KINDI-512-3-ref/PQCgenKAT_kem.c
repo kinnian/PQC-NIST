@@ -21,6 +21,7 @@
 int		FindMarker(FILE *infile, const char *marker);
 int		ReadHex(FILE *infile, unsigned char *A, int Length, char *str);
 void	fprintBstr(FILE *fp, char *S, unsigned char *A, unsigned long long L);
+int i;
 
 int
 main()
@@ -47,11 +48,11 @@ main()
         return KAT_FILE_OPEN_ERROR;
     }
     
-    for (int i=0; i<48; i++)
+    for ( i=0; i<48; i++)
         entropy_input[i] = i;
 
     randombytes_init(entropy_input, NULL, 256);
-    for (int i=0; i<100; i++) {
+    for ( i=0; i<100; i++) {
         fprintf(fp_req, "count = %d\n", i);
         randombytes(seed, 48);
         fprintBstr(fp_req, "seed = ", seed, 48);

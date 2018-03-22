@@ -1,6 +1,6 @@
 objects = ake.o ke.o kem.o encrypt.o ecc.o bch.o bin-lwe.o rand.o rng.o 
 mainobjects = PQCgenKAT_encrypt.o PQCgenKAT_kem.o PQCgenKAT_ke.o PQCgenKAT_ake.o 
-cflags = -O3 -Wall -DNDEBUG
+cflags = -O3 -Wall -DNDEBUG -std=c99
 
 all: katencrypt katkem katke katake
 

@@ -2,6 +2,7 @@
 
 # Recupere la variable path_name directement du bash
 from docopt import docopt
+import os
 
 help = """ Calcul des tailles moyennes
 
@@ -16,7 +17,7 @@ Options:
 path = docopt(help).get('<arg>')
 
 def size(path_name):
-    output = open("/home/kinnian/Documents/PQC-NIST/Tests/" + path_name, "r")
+    output = open(os.path.abspath(path_name), "r")
     results = output.read();
     data = results.split('\n\n')    # on separe les differentes instances
     data = data[1:]     # on supprime le '# <Nom du protocoles>' du debut du fichier
