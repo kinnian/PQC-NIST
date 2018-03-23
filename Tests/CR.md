@@ -17,11 +17,9 @@ A noter cependant que les compressions parfois mentionnées dans la documentatio
 
 ## Temps d'exécution
 
-Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en secondes), sur deux ordinateurs différents :
+Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en secondes), sur deux ordinateurs différents, Ordi1 et Ordi2, pour les versions de références et optimisées :
 
-|	      | Ordi1	  	      | Ordi 2		       |
-| ----------- |:--------------------- |:---------------------- |
-| Protocoles  | Référence | Optimisé  | Référence  | Optimisé  |
+| Protocoles  | Ordi1-ref | Ordi1-opt | Ordi2-ref  | Ordi2-opt |
 |:---------   | ---------:| ---------:| ----------:| ---------:|
 | Kyber1024   | 0.179     | 0.179     | 0.799      | 0.796     |
 | Hila5       | 1.802     | 0.316     | 8.549      | 2.124     |
