@@ -18,7 +18,7 @@ A noter que, chaque soumission ayant été construite est testée sur des machin
 
 ## Tests des implémentations soumises
 
-A la suite de cet état de l'art, 12 protocoles de KEM ont été sélectionnés selon les critères suivants -- par ordre d'importance :
+A la suite de cet état de l'art, 10 protocoles de KEM ont été sélectionnés selon les critères suivants -- par ordre d'importance :
 1. Niveau de sécurité 5 (le plus élevé)
 2. Tailles des clés et du chiffré relativement petites
 3. Temps d'exécution relativement faible
@@ -29,7 +29,6 @@ Les protocoles choisis sont les suivants :
 * Kindi-{256-5, 512-3}
 * LAC256
 * NewHope1024
-* {A,O}KCN-RLWE
 * uRound2-RLWR5
 * FireSaber
 * {Mama,Papa}Bear
