@@ -1,7 +1,5 @@
 /*
-Implementation by the Keccak Team, namely, Guido Bertoni, Joan Daemen,
-Michaël Peeters, Gilles Van Assche and Ronny Van Keer,
-hereby denoted as "the implementer".
+Implementation by Gilles Van Assche, hereby denoted as "the implementer".
 
 For more information, feedback or questions, please refer to our website:
 https://keccak.team/
@@ -18,15 +16,19 @@ Please refer to PlSnP-documentation.h for more details.
 #ifndef _KeccakP_1600_times2_SnP_h_
 #define _KeccakP_1600_times2_SnP_h_
 
-#include "KeccakP-1600-SnP.h"
+#include "SIMD128-config.h"
 
-#define KeccakP1600times2_implementation        "fallback on serial implementation (" KeccakP1600_implementation ")"
-#define KeccakP1600times2_statesSizeInBytes     (((KeccakP1600_stateSizeInBytes+(KeccakP1600_stateAlignment-1))/KeccakP1600_stateAlignment)*KeccakP1600_stateAlignment*2)
-#define KeccakP1600times2_statesAlignment       KeccakP1600_stateAlignment
+#define KeccakP1600times2_implementation        "128-bit SIMD implementation (" KeccakP1600times2_implementation_config ")"
+#define KeccakP1600times2_statesSizeInBytes     400
+#define KeccakP1600times2_statesAlignment       16
+#define KeccakF1600times2_FastLoop_supported
 
-void KeccakP1600times2_StaticInitialize( void );
+#include <stddef.h>
+
+#define KeccakP1600times2_StaticInitialize()
 void KeccakP1600times2_InitializeAll(void *states);
-void KeccakP1600times2_AddByte(void *states, unsigned int instanceIndex, unsigned char data, unsigned int offset);
+#define KeccakP1600times2_AddByte(states, instanceIndex, byte, offset) \
+    ((unsigned char*)(states))[(instanceIndex)*8 + ((offset)/8)*2*8 + (offset)%8] ^= (byte)
 void KeccakP1600times2_AddBytes(void *states, unsigned int instanceIndex, const unsigned char *data, unsigned int offset, unsigned int length);
 void KeccakP1600times2_AddLanesAll(void *states, const unsigned char *data, unsigned int laneCount, unsigned int laneOffset);
 void KeccakP1600times2_OverwriteBytes(void *states, unsigned int instanceIndex, const unsigned char *data, unsigned int offset, unsigned int length);
@@ -40,5 +42,6 @@ void KeccakP1600times2_ExtractBytes(const void *states, unsigned int instanceInd
 void KeccakP1600times2_ExtractLanesAll(const void *states, unsigned char *data, unsigned int laneCount, unsigned int laneOffset);
 void KeccakP1600times2_ExtractAndAddBytes(const void *states, unsigned int instanceIndex,  const unsigned char *input, unsigned char *output, unsigned int offset, unsigned int length);
 void KeccakP1600times2_ExtractAndAddLanesAll(const void *states, const unsigned char *input, unsigned char *output, unsigned int laneCount, unsigned int laneOffset);
+size_t KeccakF1600times2_FastLoop_Absorb(void *states, unsigned int laneCount, unsigned int laneOffsetParallel, unsigned int laneOffsetSerial, const unsigned char *data, size_t dataByteLen);
 
 #endif

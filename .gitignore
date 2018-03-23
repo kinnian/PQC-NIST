@@ -41,3 +41,6 @@ Performance_Testing_TestPlatform.xlsx
 
 # Les fichiers compilés
 *.o
+**/PQCgenKAT_kem
+**/genkat_ref
+**/genkat_opt
