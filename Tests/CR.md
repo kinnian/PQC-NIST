@@ -2,6 +2,7 @@
 
 ### Remarque préliminaire
 Les protocoles Kindi-{256-5,512-3}, uRound2-RLWR5 et {Mama,Papa}Bear n'ont pas pu être testées sur la première machine. Il s'agit la plupart du temps d'une erreur lors du `make`. En revanche, comme ces erreurs ne sont pas relevées par les tests de performances effectués par le NIST, il s'agit probablement d'un défaut de la machine utilisée (absence d'une librairie, ...).
+
 Pour le moment, des tentatives de correction ont été apportées en ajoutant la bibliothèque [keccak](https://github.com/gvanas/KeccakCodePackage) `KeccakCodePackage`, dans sa version `Haswell`, ainsi que l'installation de [libkeccak](https://github.com/maandree/libkeccak). Cela a permis de compiler correctement les versions de références de MamaBear et PapaBear. Cependant, les versions optimisées, ainsi que uRound2-RLWR5 (qui utilise la même bibliothèque), font appel à des fonctions de cette bibliothèque que le compilateur ne semble pas trouver. 
 Le même problème s'est présenté sur la deuxième machine sur laquelle j'ai testé ces codes, à quelques différences près :
 
