@@ -38,9 +38,15 @@ Titanium/*
 # minimum NIST security levels) when run on the NIST reference platform."
 Performance_Testing_TestPlatform.xlsx
 
-
 # Les fichiers compilés
 *.o
 **/PQCgenKAT_kem
 **/genkat_ref
 **/genkat_opt
+kem
+test_kex
+**/build/
+
+# Les fichiers de réponses qui sont recalculés à chaque exécution
+*.rsp
+*.req
