@@ -9,10 +9,7 @@ de ces données.
 ## Calcul des tailles moyennes
 
 
-Tout d'abord, avant de lancer la méthode python, il faut avoir produit le fichier contenant les 100 instances de (sk, pk, ct, ss). Pour se faire, il faut
-se rendre dans le dossier du protocole choisi, dans sa version standard ou optimisé, lancer la commande `make` puis exécuter l'exécutable qui a été
-produit.
-
+Tout d'abord, avant de lancer la méthode python, il faut avoir produit le fichier contenant les 100 instances de (sk, pk, ct, ss).
 
 La syntaxe d'utilisation de `size.py` est la suivante :
 ```
