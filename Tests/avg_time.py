@@ -2,7 +2,7 @@
 import os
 
 print("Chemin de l'executable ?")
-os.system("avg_time.sh")
+os.system("./avg_time.sh")
 
 output = open(os.path.abspath("./results"), "r").read()
 
