@@ -75,17 +75,25 @@ Les tailles sont en octets, les temps en microsecondes.
 #### Remarques
 
 * La documentation de Compact-LWE donne des résultats pour différentes tailles de messages. J'ai choisi de ne garder que les données pour un message de 1024 octets.
+
 * Pour la soumission Lima, les tailles de clés publique et privées sont données avec et sans compression, et avec un encodage de Huffman ; c'est les
   valeurs de ce dernier cas que j'ai gardé. De même pour le chiffré, les valeurs sont données selon que la sécurité garantie est CCA ou CPA, avec des
   tailles non compressées et compressées. J'ai décidé de garder les valeurs du cas CCA compresssé. De même pour les temps d'exécutions, plusieurs valeurs
   sont données. J'ai gardé celles du cas CCA sur le processeur le plus performant des 4 donnés.
+
 * La documentation pour LOTUS n'est pas très claire sur les unités utilisées, et ne précisent pas la valeur de c, la taille de la "clé symmétrique". Il y a
   donc potentiellement des erreurs d'ordre de grandeur pour les paramètres dans le tableau pour lotus128, lotus192 et lotus256.
+
 * La soumission NewHope n'utilise son protocole PKE uniquement comme partie d'un KEM, et déconseille l'utilisation du PKE seul, en partie car il n'accepte pas de message de taille arbitraire. Il n'est donc pas présent dans ce tableau des paramètres des PKE.
+
 * Pour Lizard et RLizard, certaines configurations de paramètres sont omises ; elles ont les mêmes ordres de grandeur de performance.  A noter aussi que la
   taille des messages chiffrés n'est pas exactement la même entre plusieurs niveaux de sécurité (32 octets pour sécurité 1, 48 pour 3 et 64 pour 5).
+
 * NTRUEncrypt donne deux fichiers de résultats différents, avec des valeurs un peu différentes entre les deux, mais les ordres de grandeur reste
   sensiblement les mêmes.
+
 * La soumission OKCN-AKCN donne les temps d'exécutions pour différentes tailles de messages (de 32 à 20000 octets) ; j'ai conservé celle pour 20000 octets.
+
 * La soumission Saber donne la taille de la clé secrète non compressée et compressée ; j'ai gardé la valeur compressée.
+
 * Titanium donne les valeurs pour une sécurité CPA et CCA ; j'ai gardé celles de CCA.

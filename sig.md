@@ -33,7 +33,9 @@ Les tailles sont en octets, et les temps en microsecondes.
 #### Remarques
 
 * Falcon donne des signatures approximées car il s'agit d'une moyenne, les variations étant dûe à la compression variable de la signature.
+
 * Apparemment les demandes du NIST excluait l'utilisation d'optimisations liées à AVX2 ; certains papiers ont malgré tout fait cette optimisation, mais je
   ne l'ai pas prise en compte.
+
 * qTesla donne dans sa documentation des valeurs théoriques et les valeurs qu'ils ont eu en pratique lors de l'implémentation. J'ai décidé de garder les
   valeurs expérimentales, qui reflètent à mon sens mieux l'efficacité réelle de ce protocole.

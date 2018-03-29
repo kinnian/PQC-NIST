@@ -95,8 +95,12 @@ proposent uniquement un KEM :
 
 * Pour EMBLEM et R.EMBLEM, de nombreux autres sets de paramètres sont donnés ; j'ai choisi de gardé uniquement ceux qui minimise la taille combiné de la
   clé publique et du chiffré.
+
 * La taille de la clé privée de Hila5 est donnée après compression.
+
 * De même que pour le PKE, la documentation de LOTUS n'est pas très précise sur les unités ; je ne garanti pas l'exactitude des résultats reportés ici.
+
 * Pour Lizard, j'ai choisi un seul des deux instances proposées par niveau de sécurité - celle avec les plus petits paramètres.
+
 * La documentation de NTRU prime donne des ordres de grandeurs pour certaines mesures de temps ; il s'agit donc d'approximations.
 * Pour ThreeBears, j'ai choisi le temps d'exécution de la version CCA-secure ; ceux de la version CPA-secure sont plus petits.
