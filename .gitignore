@@ -24,7 +24,7 @@ pqNTRUsign/*
 qTESLA/*
 Round2/*
 SABER_KEM/*
-submission/*
+ThreeBears/*
 Titanium/*
 
 # Les rendus pdf des fichiers markdown
@@ -50,3 +50,6 @@ test_kex
 # Les fichiers de réponses qui sont recalculés à chaque exécution
 *.rsp
 *.req
+
+# Toute la partie de benchmark @github.com/mjosaarinen/pqcbench
+pqcbench/*
