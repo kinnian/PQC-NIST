@@ -59,3 +59,73 @@ Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en s
   optimisées, et je n'arrive pas à exécuter ces versions, qui utilisent beaucoup de fonctions externes, et possiblement des optimisations hardware.
 
 * A l'aide des exécutions sur une seconde machine, on peut voir que les codes Kindi se distinguent aussi par leur rapidité ; leur temps d'exécution est du même ordre de grandeur que Kyber1024. On peut en revanche supposer qu'ils restent plus lents que LAC256, qui est lui deux fois plus rapide que Kyber1024 (d'après les tests effectués sur la première machine et ceux du NIST).
+
+
+## Version benchmarkée
+
+Une version benchmarkée des soumissions au NIST a été proposée [ici](https://github.com/mjosaarinen/pqcbench). Elle permet notamment d'évaluer le temps d'exécution total des KEMs soumis. Pour avoir un meilleur aperçu de l'ordre de grandeur des temps d'exécution de ces protocoles, je donne ici la liste complète de tous les KEMs utilisant LWE ou une variante, avec neufs des dix retenus précédemment indiqués en gras, LAC256 n'apparaissant pas dans cette liste. Sans doute mjosaarinen n'a pas réussi à exéctuer ce code en particulier dans son benchmark. J'ai ajouté de plus l'information concernant le niveau de sécurité et la taille de (clé publique + chiffré).
+
+
+| Protocole			| Temps total (ms)	| pk + ct (octets)	| Niveau de sécurité	|
+|:-----------------------------	| ---------------------:| ---------------------:| ---------------------:|
+| BabyBearEphem        		| 0.05			| 1 721			| 2			|	
+| BabyBear             		| 0.08			| 1 721			| 2			|
+| MamaBearEphem        		| 0.08			| 2 501			| 4			|
+| NewHope512    		| 0.09			| 2 048			| 1			|
+| **MamaBear**	       		| 0.13			| 2 501			| 5			|
+| PapaBearEphem        		| 0.13			| 3 281			| 5			|
+| LAC128      	       		| 0.15			| 1 568			| 2			|
+| RLizard2048          		| 0.17			| 16 448		| 5			|
+| uRound2-RLWR1 		| 0.18			| 917			| 1			|
+| Kyber512	       		| 0.18			| 1 536			| 1			|
+| **PapaBear**	       		| 0.20			| 3 281			| 5			|
+| uRound2-RLWR2 		| 0.25			| 1 173			| 2			|
+| Kyber768	       		| 0.26			| 2 240			| 3			|
+| AKCN-MLWE	       		| 0.27			| 2 111			| 4			|
+| OKCN-MLWE	       		| 0.27			| 2 111			| 4			|
+| uRound2-RLWR3 		| 0.28			| 1 201			| 3			|
+| Kindi-256-3	           	| 0.31			| 2 976			| 2			|
+| **NewHope1024**       	| 0.32			| 4 032			| 5			|		
+| Kindi-512-2	           	| 0.36			| 3 952			| 4			|
+| **Kyber1024**               	| 0.37			| 2 944			| 5			|	
+| LIMA-2p	               	| 0.38			| 8 451			| 3			|
+| **uRound2-RLWR5**		| 0.38			| 1 565			| 5			|
+| uRound2-RLWR4			| 0.41			| 1 589			| 4			|
+| OKCN-RLWE                   	| 0.42			| 3 651			| 5			|
+| AKCN-RLWE                 	| 0.42			| 3 779			| 5			|
+| ntru-443	           	| 0.48			| 1 222			| 1			|
+| LightSaber               	| 0.61			| 1 408			| 1			|
+| Kindi-256-5              	| 0.72			| 4 672			| 5 			|
+| Kindi-512-3              	| 0.72			| 5 696			| 5			|
+| Saber                    	| 1.10			| 2 080			| 3			|
+| ntru-743	           	| 1.11			| 2 046			| 4			|
+| uRound2-LWR1			| 1.31			| 918			| 1			|
+| Std128	         	| 1.61			| 19 904		| 1			|
+| LIMA-2p	            	| 1.68			| 8 451			| 3			|
+| **FireSaber**                	| 1.75			| 2 784			| 5			|
+| Hi192		          	| 2.12			| 26 560		| 3			|
+| uRound2-LWR2			| 2.51			| 12 841		| 2			|
+| uRound2-LWR3			| 2.54			| 12 195		| 3			|
+| **HILA5**                    	| 2.89			| 3 836			| 5			|
+| Super256		       	| 3.00			| 35 264		| 5			|
+| uRound2-LWR5			| 3.92			| 17 389		| 5			|
+| lotus128              	| 4.78			| 81 511		| 1			|
+| uRound2-LWR4			| 4.87			| 21 761		| 4			|
+| NTRU-HRSS	          	| 6.06			| 2 416			|			|
+| nRound2-1		     	| 6.78			| 881			| 1			|
+| lotus192              	| 8.61			| 137 807		| 3			|
+| nRound2-2		   	| 9.97			| 1 133			| 2			|
+| nRound2-3		     	| 12.75			| 1 233			| 3			|
+| lotus256              	| 15.23			| 199 071		| 5			|
+| ntrulpr			| 16.75			| 2 204			| 5			|
+| nRound2-4		     	| 17.79			| 1 605			| 4			|
+| nRound2-5     		| 17.80			| 1 509			| 5			|
+| sntrup		 	| 19.95			| 2 265			| 5			|
+| Frodo-640             	| 39.10			| 19 352		| 1			|
+| Frodo-976       		| 90.08			| 31 400		| 3			|
+| ntru-1024			| 148.77		| 8 194			| 5			|
+
+
+#### Remarque :
+
+* Les temps sont donnés arrondi au centième. Le script de pqcbench donne des temps beaucoup plus précis, mais cela n'est pas utile pour une simple comparaison, au vu des ordres de grandeurs concernés.
