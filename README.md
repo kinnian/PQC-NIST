@@ -40,6 +40,6 @@ Dans le dossier de [tests](./Tests/) se trouvent :
 * Les versions standards (`std`) et optimisées (`opt`) de chaque protocole choisi ;
 * Des fonctions python permettant d'effectuer des tests de tailles de clés, chiffrés et secrets communs, et de vitesse d'exécution sur la machine courante ;
 * Un deuxième [README](./Tests/README.md) expliquant comment utiliser ces fonctions.
-* Un [compte-rendu](.Tests/CR.md) des tests effectués.
+* Un [compte-rendu](./Tests/CR.md) des tests effectués.
 
 [^1]: 1=AES-128, 2=SHA256, 3=AES192, 4=SHA384, 5=AES256.
