@@ -5,7 +5,7 @@
 Il y a de nombreux protocoles PKE qui ont été soumis :
 
 * Compact-LWE, basé sur LWE ;
-* Kindi, basé sur RLWE ;
+* Kindi, basé sur MLWE ;
 * LAC, basé sur RLWE ;
 * LIMA, basé sur RLWE, avec deux contraintes différentes pour p : power-of-two (2p) ou safe-prime (sp) ;
 * LOTUS, basé sur LWE ;
