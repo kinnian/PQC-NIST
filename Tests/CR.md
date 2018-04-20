@@ -124,8 +124,8 @@ Une version benchmarkée des soumissions au NIST a été proposée [ici](https:/
 | AKCN-RLWE                 	| 0.42			| 3 779			| 5			|
 | ntru-443	           	| 0.48			| 1 222			| 1			|
 | LightSaber               	| 0.61			| 1 408			| 1			|
-| Kindi-256-5              	| 0.72			| 4 672			| 5 			|
-| Kindi-512-3              	| 0.72			| 5 696			| 5			|
+| **Kindi-256-5**              	| 0.72			| 4 672			| 5 			|
+| **Kindi-512-3**              	| 0.72			| 5 696			| 5			|
 | Saber                    	| 1.10			| 2 080			| 3			|
 | ntru-743	           	| 1.11			| 2 046			| 4			|
 | uRound2-LWR1			| 1.31			| 918			| 1			|
