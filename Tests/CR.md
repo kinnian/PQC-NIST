@@ -60,6 +60,35 @@ Voici un tableau récapitulatif des temps moyen obtenus pour 100 instances (en s
 
 * A l'aide des exécutions sur une seconde machine, on peut voir que les codes Kindi se distinguent aussi par leur rapidité ; leur temps d'exécution est du même ordre de grandeur que Kyber1024. On peut en revanche supposer qu'ils restent plus lents que LAC256, qui est lui deux fois plus rapide que Kyber1024 (d'après les tests effectués sur la première machine et ceux du NIST).
 
+### Temps constant
+
+Une question importante, en dehors de la rapidité d'exécution, est celle d'une implémentation, ou non, en temps constant. En effet, une implémentation constante permet de contrer les attaques par canal auxiliaire (side-channel attacks) basées sur une étude du temps de calcul. Une vérification pratique qui étudie en particulier la sécurité de chaque soumission à des attaques cache-timing est en cours par une équipe du RISQ, qui a déjà publié des [résultats préliminaires](http://risq.fr/?page_id=473&lang=en). Ici, je m'intéresse à ce qui est annoncé par les soumissions que je considère quant à leur caractère temps constant implémenté ou possible ou non.
+
+Il y a 7 soumissions qui annoncent avoir implémenté leur algorithme en temps constant :
+
+* CRYSTALS-Dilithium
+* Kyber
+* Frodo
+* Kindi
+* NTRU-HRSS
+* Round2
+* Titanium
+
+Deux soumissions mentionnent avoir implémenté une partie de leur algorithme en temps constant :
+
+* Hila5, qui dit avoir un échantillonnage et un code correcteur d'erreurs implémentés en temps constant, et qui signal que l'arithmétique sur anneau peut aussi être implémentée en temps constant ;
+* ThreeBears, qui mentionne que leur implémentation du code de Melas est en temps constant.
+
+Plusieurs soumissions mentionnent une implémentation en temps constant comme no codée mais possible :
+
+* Falcon
+* NTRUEncrypt, pour en particulier la multiplication de polynômes
+* OKCN-AKCN, pour en particulier les conditionnements "if"
+* Saber
+
+A noter que pqNTRUSign mentionne que leur échantillonnage Gaussien pourrait être implémenté en temps constant, ce qui est faux à moins de s'intéresser à une approximation de Gaussienne, ce que fait par exemple Frodo.
+
+
 
 ## Version benchmarkée
 

@@ -15,19 +15,19 @@ J'ai trouvé plusieurs soumissions de protocoles de signature qui utilise des al
 
 Les tailles sont en octets, et les temps en microsecondes.
 
-| Protocole     | Niveau de sécurité	| N 	| Clé publique	| Signature	| Temps de calcul	|
-|:-----------   |:------------------	| ---:	| ------------: | ---------:    | ---------------:  	|
-| Dilithium-2	| 1		 	| 768	| 1 184         | 2 044      	| 529.2             	|
-| Dilithium-3   | 2			| 1024  | 1 472         | 2 701      	| 741.9             	|
-| Dilithium-4   | 3			| 1280  | 1 760         | 3 366      	| 782.4             	|
-| Falcon-512    | 1			| 512   | 897           | 617.38    	| 6 980              	|
-| Falcon-768    | 2, 3			| 768   | 1 441         | 993.91    	| 12 690		|
-| Falcon-1024   | 4, 5			| 1024  | 1 793         | 1 233.29   	| 19 640		|
-| Gaussian-1024 | 5 			| 1024	| 2 065		| 2 065		| 16 8760		|
-| Uniform-1024	| 5			| 1024	| 2 065		| 2 065		| 12 1870		|
-| qTesla-128    | 1			| 1024  | 4 128         | 2 112		| 2.67              	| 
-| qTesla-192    | 3			| 2048  | 8 224         | 6 176		| 6.9               	|
-| qTesla-256    | 5			| 2048  | 8 224         | 6 175		| 21.2              	|
+| Protocole     | Niveau de sécurité	| N 	| Clé publique	| Signature	| Temps de calcul	| Temps constant	|
+|:-----------   |:------------------	| ---:	| ------------: | ---------:    | ---------------:  	|:--------------        |
+| Dilithium-2	| 1		 	| 768	| 1 184         | 2 044      	| 529.2             	| Oui			|
+| Dilithium-3   | 2			| 1024  | 1 472         | 2 701      	| 741.9             	| Oui			|
+| Dilithium-4   | 3			| 1280  | 1 760         | 3 366      	| 782.4             	| Oui			|
+| Falcon-512    | 1			| 512   | 897           | 617.38    	| 6 980              	| Non, mais possible	|
+| Falcon-768    | 2, 3			| 768   | 1 441         | 993.91    	| 12 690		| Non, mais possible	|
+| Falcon-1024   | 4, 5			| 1024  | 1 793         | 1 233.29   	| 19 640		| Non, mais possible	|
+| Gaussian-1024 | 5 			| 1024	| 2 065		| 2 065		| 16 8760		| Non mentionnée	|
+| Uniform-1024	| 5			| 1024	| 2 065		| 2 065		| 12 1870		| Non mentionnée	|
+| qTesla-128    | 1			| 1024  | 4 128         | 2 112		| 2.67              	| Non mentionnée	|
+| qTesla-192    | 3			| 2048  | 8 224         | 6 176		| 6.9               	| Non mentionnée	|
+| qTesla-256    | 5			| 2048  | 8 224         | 6 175		| 21.2              	| Non mentionnée	|
 
 
 #### Remarques
