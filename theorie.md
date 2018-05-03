@@ -137,6 +137,8 @@ Une variante un peu plus intéressante est présente dans la soumission **Kindi*
 
 Ceci leur permet d'obtenir une méthode de chiffrement plus compacte (comme l'indique le nom), avec des tailles de clés et d'espace plus petites, au prix de calculs plus compliqués.
 
+**Remarque** Compact-LWE, depuis sa soumission au NIST, a été comme étant non sécurisé pour les paramètres admis comme IND-CPA par la soumission. Plus d'information [ici](https://eprint.iacr.org/2018/020)
+
 ### Méthode de réconciliation de clé de Peikert
 
 Dans le contexte proposé par le NIST d'un KEM, key exchange mechanism, il est possible d'adapter cette méthode de chiffrement pour un déduire une méthode d'échange de clé par réconciliation, décrit pour la première fois par Peikert. Ce KEM repose sur le fait que les quantités définies précédemment v et U.S sont très proches. Il suffit donc à Alice et Bob d'effectuer un chiffrement classique, avec m = 0, pour que chacun se retrouve en possession d'une clé qui est, à des termes d'erreurs très faibles près, identique.
