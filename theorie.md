@@ -133,7 +133,7 @@ Une variante un peu plus intéressante est présente dans la soumission **Kindi*
 
 **Compact-LWE** en revanche varie beaucoup du chiffrement "classique", dont il s'inspire. Cette soumission propose des échantillons "doubles" de LWE, de la forme suivante :
 
-	(ai, \<ai,s\> + k.(ri + p.ei) mod q, \<ai,s'\> + k'.(ri' + p* ei') mod q)
+	(ai, <ai,s> + k.(ri + p.ei) mod q, <ai,s'> + k'.(ri' + p* ei') mod q)
 
 Ceci leur permet d'obtenir une méthode de chiffrement plus compacte (comme l'indique le nom), avec des tailles de clés et d'espace plus petites, au prix de calculs plus compliqués.
 
